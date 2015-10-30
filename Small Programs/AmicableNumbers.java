@@ -3,7 +3,16 @@
 import java.util.Scanner;
 class AmicableNumbers
 {
-    
+    public static int divSum(int number)
+    {
+        int sum = 0;
+        for(int i = 1; i < number; i++)
+        {
+            if(number % i == 0)
+                sum += i;
+        }
+        return sum;
+    }
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
@@ -13,19 +22,8 @@ class AmicableNumbers
         System.out.println("Enter the 2nd number:");
         num2 = scan.nextInt();
         
-        //Run the divisor check for 1st number
-        for(int i = 1; i < num1; i++)
-        {
-            if(num1 % i == 0)
-                sum1 += i;
-        }
-        //Run the divisor check for 1st number
-        for (int i = 1; i < num2 ; i++)
-        {
-            if(num2 % i == 0)
-                sum2 += i;
-        }
-        
+        sum1 = divSum(num1);
+        sum2 = divSum(num2);
         if(num1 == sum2 && num2 == sum1)
             System.out.println("Voila the numbers are amicable!");
         else
